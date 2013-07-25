@@ -1,5 +1,3 @@
-ReKognition_iOS_SDK
-
 Current Version: 1.0
 ===============================
 
