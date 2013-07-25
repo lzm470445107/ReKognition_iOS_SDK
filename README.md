@@ -62,6 +62,8 @@ The folder contains our iOS SDKs (folder named SDK) and a simple example to demo
 // ReKognition Scene Understadning Function
 + (NSString *) RKSceneUnderstanding: (UIImage *) image
                               scale: (CGFloat) scale;
+
+
                               
 2. The example allows the users to 
 a. select a photo from the album or take a picture using the camera; 
