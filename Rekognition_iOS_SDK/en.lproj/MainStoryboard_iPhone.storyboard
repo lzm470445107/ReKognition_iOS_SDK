@@ -1,23 +1,116 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lBo-76-uO9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="empty_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="sYN-sr-hhI">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="427" id="MqU-fk-GVX"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="8" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="03W-eZ-rbY" userLabel="Label - Label">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="78" id="vdy-tf-pmo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="d7i-2Y-6vE">
+                                <items>
+                                    <barButtonItem title="Select Image" id="dNR-bf-59A">
+                                        <connections>
+                                            <action selector="btnSelectImageClicked:" destination="2" id="XlS-ht-f9q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RGz-eJ-pRz"/>
+                                    <barButtonItem title="ReKognize Image" id="pdS-zD-OMk">
+                                        <connections>
+                                            <action selector="btnReKognizeImageClicked:" destination="2" id="eyB-dD-Fwo"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="RS3-2o-FV4">
+                                <color key="color" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="03W-eZ-rbY" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="3rV-cz-tlI"/>
+                            <constraint firstItem="d7i-2Y-6vE" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="7ev-1h-3Ti"/>
+                            <constraint firstItem="d7i-2Y-6vE" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="9uw-Dr-RpA"/>
+                            <constraint firstItem="03W-eZ-rbY" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="JTD-li-chz"/>
+                            <constraint firstItem="RS3-2o-FV4" firstAttribute="top" secondItem="3" secondAttribute="top" constant="100" id="LdR-HT-L4Y"/>
+                            <constraint firstItem="d7i-2Y-6vE" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="eBw-GB-cqk"/>
+                            <constraint firstItem="03W-eZ-rbY" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="gBZ-P7-XHE"/>
+                            <constraint firstItem="sYN-sr-hhI" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="lMt-uN-tAR"/>
+                            <constraint firstItem="sYN-sr-hhI" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="nCX-Gm-CG4"/>
+                            <constraint firstItem="sYN-sr-hhI" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="qiz-H9-yZV"/>
+                            <constraint firstItem="RS3-2o-FV4" firstAttribute="centerX" secondItem="03W-eZ-rbY" secondAttribute="centerX" type="default" id="ufX-BQ-dhe"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hqx-nM-M2e"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="RS3-2o-FV4" id="W9e-Vn-vts"/>
+                        <outlet property="imageView" destination="sYN-sr-hhI" id="f6E-AT-dmk"/>
+                        <outlet property="labelView" destination="03W-eZ-rbY" id="XWV-dC-0Cj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="363" y="-75"/>
+        </scene>
+        <!--Navigation Controller - ReKognition Example-->
+        <scene sceneID="Vm8-9t-Yvb">
+            <objects>
+                <navigationController title="ReKognition Example" id="lBo-76-uO9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="HIi-ET-J0l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="Mhv-W9-dOj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z3w-rZ-vkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-95" y="-75"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="empty_pic.png" width="706" height="1013"/>
+    </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnReKognizeImageClicked:"/>
+                <relationship kind="action" name="btnSelectImageClicked:"/>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="labelView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
