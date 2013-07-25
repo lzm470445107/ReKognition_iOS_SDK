@@ -3,7 +3,7 @@ ReKognition_iOS_SDK
 
 The folder contains our iOS SDKs (folder named SDK) and a simple example to demo the SDK.
 
-1. The SDK contains the following functions:
+The SDK contains the following functions:
 
 // ReKognition Post Jobs Function (to customize your own recognition functions)
 + (NSString*) postReKognitionJobs:(NSDictionary *) jobsDictionary;
@@ -64,12 +64,17 @@ The folder contains our iOS SDKs (folder named SDK) and a simple example to demo
                               scale: (CGFloat) scale;
 
 
+/////////////////////////////////////////////////////////////////
                               
-2. The example allows the users to 
-a. select a photo from the album or take a picture using the camera; 
-b. recognize the image using the our face detection and scene understanding functions;
+The ReKo SDK example allows the users to 
+
+(a) Select a photo from the album or take a picture using the camera; 
+
+(b) Recognize the image using the our face detection and scene understanding functions;
 
 Notes: 
-a. when processing photo taken by the back camera, it might take a while since the image is not resized (in the to-do list)
-b. still working on the iPad version
+
+(a) When processing photo taken by the back camera, it might take a while since the image is not resized (in the to-do list)
+
+(b) The iPad version is still under construction
 
