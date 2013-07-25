@@ -1,5 +1,7 @@
 ReKognition_iOS_SDK
-===================
+
+Current Version: 1.0
+===============================
 
 The folder contains our iOS SDKs (folder named SDK) and a simple example to demo the SDK.
 
@@ -64,9 +66,19 @@ The SDK contains the following functions:
                               scale: (CGFloat) scale;
 
 
-/////////////////////////////////////////////////////////////////
+Configuration:
+===============================
+
+(a) Register an API Key from https://www.rekognition.com/register/, and you will receive API key and secret by email.
+
+(b) Use your own API Key and Secret in RekognitionSDK.m
+   
+static NSString *API_Key = @"YOUR_API_KEY";
+static NSString *API_Secret = @"YOUR_API_SECRET";
+
                               
-The ReKo SDK example allows the users to 
+The ReKo SDK example: 
+===============================
 
 (a) Select a photo from the album or take a picture using the camera; 
 
@@ -78,3 +90,4 @@ Notes:
 
 (b) The iPad version is still under construction
 
+For any questions, please contact yschen@orbe.us
