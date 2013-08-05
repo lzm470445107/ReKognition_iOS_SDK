@@ -93,10 +93,10 @@ static NSString *API_Secret = @"YOUR_API_SECRET";
 The ReKo SDK example: 
 ===============================
 <ol>
-<li> Select a photo from the album or take a picture using the camera; <\li> 
+<li> Select a photo from the album or take a picture using the camera; </li> 
 
-<li> Recognize the image using the our face detection and scene understanding functions;<\li> 
-<\ol>
+<li> Recognize the image using the our face detection and scene understanding functions;</li> 
+</ol>
 
 Notes: 
 
