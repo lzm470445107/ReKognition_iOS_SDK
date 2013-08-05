@@ -100,8 +100,11 @@ The ReKo SDK example:
 
 Notes: 
 
-(a) When processing photo taken by the back camera, it might take a while since the image is not resized (in the to-do list)
-
-(b) The iPad version is still under construction
+<ul>
+<li> When processing photo taken by the back camera, it might take a while since the image is not resized (in the to-do list)
+</li>
+<li> The iPad version is still under construction
+</li>
+</ul>
 
 For any questions, please contact eng@orbe.us
