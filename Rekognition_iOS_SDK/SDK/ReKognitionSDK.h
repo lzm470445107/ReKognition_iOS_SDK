@@ -16,11 +16,11 @@
 // ReKognition Post Jobs Function (to customize your own recognition functions)
 + (NSString*) postReKognitionJobs:(NSDictionary *) jobsDictionary;
 
-// ReKognition Face Detect Function
+// ReKognition Face Detect Function (the image you want to recognize and the scaling factor for the image)
 + (NSString *) RKFaceDetect: (UIImage*) image
                       scale: (CGFloat) scale;
 
-// ReKognition Face Add Function
+// ReKognition Face Add Function (for more details of name_space and user_id please go to reKognition.com and check out the API docs)
 + (NSString *) RKFaceAdd: (UIImage*) image
                    scale: (CGFloat) scale
                nameSpace: (NSString *) name_space
