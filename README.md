@@ -78,21 +78,25 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 
 Configuration:
 ===============================
+<ol>
+<li> Click <a href="http://v2.rekognition.com/user/create">here</a> to register a ReKognition account, and you will receive the API key and secret by email.
 
-(a) Click <a href="http://v2.rekognition.com/user/create">here</a> to register a ReKognition account, and you will receive the API key and secret by email.
-
-(b) Use your own API Key and Secret in RekognitionSDK.m
+<li> Use your own API Key and Secret in RekognitionSDK.m</li>
  
 <pre><code>static NSString *API_Key = @"YOUR_API_KEY";
 static NSString *API_Secret = @"YOUR_API_SECRET";
 </code></pre>
-                              
+
+</ol>
+
+
 The ReKo SDK example: 
 ===============================
+<ol>
+<li> Select a photo from the album or take a picture using the camera; <\li> 
 
-(a) Select a photo from the album or take a picture using the camera; 
-
-(b) Recognize the image using the our face detection and scene understanding functions;
+<li> Recognize the image using the our face detection and scene understanding functions;<\li> 
+<\ol>
 
 Notes: 
 
