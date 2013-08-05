@@ -92,6 +92,7 @@ static NSString *API_Secret = @"YOUR_API_SECRET";
 
 The ReKo SDK example: 
 ===============================
+This demo allows you to perform the following tasks:
 <ol>
 <li> Select a photo from the album or take a picture using the camera; </li> 
 
