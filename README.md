@@ -1,7 +1,8 @@
 Current Version: 1.0
 ===============================
 
-The folder contains our ReKognition iOS SDKs (ReKognitionSDK.h and ReKognitionSDK.m under folder named SDK) and 
+This ReKognition iOS SDK is intent for developers who want to integrate ReKognition API into their 
+iOS applications. The folder contains our ReKognition iOS SDKs (ReKognitionSDK.h and ReKognitionSDK.m under folder named SDK) and 
 a simple example to demo the SDK. For more information about our ReKognition API, please read our 
 <a href="http://v2.rekognition.com/developer/docs">documentation</a>.
 
@@ -90,7 +91,7 @@ static NSString *API_Secret = @"YOUR_API_SECRET";
 </ol>
 
 
-The ReKo SDK example: 
+Example: 
 ===============================
 This demo allows you to perform the following tasks:
 <ol>
