@@ -137,7 +137,7 @@
                         dispatch_queue_t queue = dispatch_get_global_queue(0,0);
                         dispatch_async(queue, ^{
                         
-                        NSString* detectResultString = [ReKognitionSDK RKFaceDetect:imageView.image scale:0.8];
+                        NSString* detectResultString = [ReKognitionSDK RKFaceDetect:imageView.image scale:1.0];
                         dispatch_sync(dispatch_get_main_queue(), ^{
                             [activityIndicator stopAnimating];
                             NSDictionary* results = [self ParseJSONResult: detectResultString];
