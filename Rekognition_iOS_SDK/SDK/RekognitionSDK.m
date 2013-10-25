@@ -15,8 +15,8 @@
 
 @implementation ReKognitionSDK
 
-static NSString *API_Key = @"YOUR_API_KEY";
-static NSString *API_Secret = @"YOUR_API_SECRET";
+static NSString *API_Key = @"1234";
+static NSString *API_Secret = @"5678";
 
 
 + (NSString*) postReKognitionJobs:(NSDictionary *) jobsDictionary{

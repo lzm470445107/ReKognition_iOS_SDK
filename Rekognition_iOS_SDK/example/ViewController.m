@@ -10,7 +10,7 @@
 #import "Base64.h"
 #import "ReKognitionSDK.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "FaceThumbnailCropper.h"
 
 @interface ViewController ()
 
@@ -93,6 +93,8 @@
                 case 0:
                 {
                     if(imageView.image){
+                        [FaceThumbnailCropper cropFaceThumbnails:imageView.image];
+                        return;
                         
                         // image x, y, width, height
                         float image_x, image_y, image_width, image_height;

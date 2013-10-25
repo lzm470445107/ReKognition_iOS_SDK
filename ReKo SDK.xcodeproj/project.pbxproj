@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08A4ED2F1813C220003F6F66 /* FaceThumbnailCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A4ED2E1813C220003F6F66 /* FaceThumbnailCropper.m */; };
+		08A4ED311813D3EC003F6F66 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A4ED301813D3EC003F6F66 /* CoreImage.framework */; };
+		08A4ED331813D407003F6F66 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A4ED321813D407003F6F66 /* AssetsLibrary.framework */; };
 		A503FC8917A06013002C6221 /* empty_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = A503FC8617A06013002C6221 /* empty_pic.png */; };
 		A503FC8A17A06013002C6221 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A503FC8717A06013002C6221 /* icon.png */; };
 		A503FC8B17A06013002C6221 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A503FC8817A06013002C6221 /* icon@2x.png */; };
@@ -30,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08A4ED2D1813C220003F6F66 /* FaceThumbnailCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceThumbnailCropper.h; sourceTree = "<group>"; };
+		08A4ED2E1813C220003F6F66 /* FaceThumbnailCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceThumbnailCropper.m; sourceTree = "<group>"; };
+		08A4ED301813D3EC003F6F66 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		08A4ED321813D407003F6F66 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		A503FC8617A06013002C6221 /* empty_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = empty_pic.png; path = images/empty_pic.png; sourceTree = "<group>"; };
 		A503FC8717A06013002C6221 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = images/icon.png; sourceTree = "<group>"; };
 		A503FC8817A06013002C6221 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "images/icon@2x.png"; sourceTree = "<group>"; };
@@ -66,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08A4ED331813D407003F6F66 /* AssetsLibrary.framework in Frameworks */,
+				08A4ED311813D3EC003F6F66 /* CoreImage.framework in Frameworks */,
 				A5484A74179FBD1B0056E2E1 /* QuartzCore.framework in Frameworks */,
 				A55CB6111799028B0089C0CD /* UIKit.framework in Frameworks */,
 				A55CB6131799028B0089C0CD /* Foundation.framework in Frameworks */,
@@ -96,6 +105,8 @@
 		A55CB60F1799028B0089C0CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				08A4ED321813D407003F6F66 /* AssetsLibrary.framework */,
+				08A4ED301813D3EC003F6F66 /* CoreImage.framework */,
 				A55CB6101799028B0089C0CD /* UIKit.framework */,
 				A5484A73179FBD1B0056E2E1 /* QuartzCore.framework */,
 				A55CB6121799028B0089C0CD /* Foundation.framework */,
@@ -150,6 +161,8 @@
 			children = (
 				A59D7CE017A055B3007F4153 /* Base64.h */,
 				A59D7CDF17A055B3007F4153 /* Base64.m */,
+				08A4ED2D1813C220003F6F66 /* FaceThumbnailCropper.h */,
+				08A4ED2E1813C220003F6F66 /* FaceThumbnailCropper.m */,
 				A59D7CE217A055B3007F4153 /* NSDictionary+HTTPBody.h */,
 				A59D7CE117A055B3007F4153 /* NSDictionary+HTTPBody.m */,
 				A59D7CDD17A05598007F4153 /* ReKognitionSDK.h */,
@@ -237,6 +250,7 @@
 				A59D7CE317A055B3007F4153 /* Base64.m in Sources */,
 				A59D7CE417A055B3007F4153 /* NSDictionary+HTTPBody.m in Sources */,
 				A503FC8E17A0ADF8002C6221 /* UIImageResize+Rotate.m in Sources */,
+				08A4ED2F1813C220003F6F66 /* FaceThumbnailCropper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
