@@ -11,7 +11,7 @@
 
 @implementation FaceThumbnailCropper
 
-const float THUMBNAIL_EDGE_LENGTH = 150.0;
+const float THUMBNAIL_EDGE_LENGTH = 180.0;
 
 + (NSArray *)cropFaceThumbnails:(UIImage *)image {
     CIImage *ciImage = image.CIImage;
@@ -32,12 +32,12 @@ const float THUMBNAIL_EDGE_LENGTH = 150.0;
         CGFloat y = ciImage.extent.size.height - ff.bounds.origin.y - ff.bounds.size.height * 1.7;
         UIImage *thumbnail = [FaceThumbnailCropper cropImage:image inRect:CGRectMake(x, y, width, height)];
 
-        if (thumbnail.size.width > THUMBNAIL_EDGE_LENGTH && thumbnail.size.height > THUMBNAIL_EDGE_LENGTH) {
+        if (thumbnail.size.width > THUMBNAIL_EDGE_LENGTH || thumbnail.size.height > THUMBNAIL_EDGE_LENGTH) {
             CGSize newSize;
             if (thumbnail.size.width > thumbnail.size.height) {
-                newSize = CGSizeMake(thumbnail.size.width / thumbnail.size.height * THUMBNAIL_EDGE_LENGTH, THUMBNAIL_EDGE_LENGTH);
-            } else {
                 newSize = CGSizeMake(THUMBNAIL_EDGE_LENGTH, thumbnail.size.height / thumbnail.size.width * THUMBNAIL_EDGE_LENGTH);
+            } else {
+                newSize = CGSizeMake(thumbnail.size.width / thumbnail.size.height * THUMBNAIL_EDGE_LENGTH, THUMBNAIL_EDGE_LENGTH);
             }
             thumbnail = [FaceThumbnailCropper imageWithImage:thumbnail scaledToSize:newSize];
         }

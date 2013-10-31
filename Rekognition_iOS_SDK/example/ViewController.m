@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "Base64.h"
 #import "ReKognitionSDK.h"
 #import <QuartzCore/QuartzCore.h>
 #import "FaceThumbnailCropper.h"
@@ -27,7 +26,6 @@
     activityIndicator.hidesWhenStopped = YES;
 	// Do any additional setup after loading the view, typically from a nib.
     // Base64 encode your jpeg image
-    
 }
 
 
@@ -93,8 +91,6 @@
                 case 0:
                 {
                     if(imageView.image){
-                        [FaceThumbnailCropper cropFaceThumbnails:imageView.image];
-                        return;
                         
                         // image x, y, width, height
                         float image_x, image_y, image_width, image_height;
@@ -139,7 +135,7 @@
                         dispatch_queue_t queue = dispatch_get_global_queue(0,0);
                         dispatch_async(queue, ^{
                         
-                        NSString* detectResultString = [ReKognitionSDK RKFaceDetect:imageView.image scale:1.0];
+                        NSString* detectResultString = [ReKognitionSDK RKFaceDetect:imageView.image jobs:nil];
                         dispatch_sync(dispatch_get_main_queue(), ^{
                             [activityIndicator stopAnimating];
                             NSDictionary* results = [self ParseJSONResult: detectResultString];
@@ -303,7 +299,7 @@
                         
                         dispatch_queue_t queue = dispatch_get_global_queue(0,0);                        
                         dispatch_async(queue, ^{
-                            NSString* sceneResultString = [ReKognitionSDK RKSceneUnderstanding:imageView.image scale: scale];
+                            NSString* sceneResultString = [ReKognitionSDK RKSceneUnderstanding:imageView.image];
                             
                             dispatch_sync(dispatch_get_main_queue(), ^{
                                 [activityIndicator stopAnimating];

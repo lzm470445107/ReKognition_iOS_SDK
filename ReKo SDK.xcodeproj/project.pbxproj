@@ -13,7 +13,6 @@
 		A503FC8917A06013002C6221 /* empty_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = A503FC8617A06013002C6221 /* empty_pic.png */; };
 		A503FC8A17A06013002C6221 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A503FC8717A06013002C6221 /* icon.png */; };
 		A503FC8B17A06013002C6221 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A503FC8817A06013002C6221 /* icon@2x.png */; };
-		A503FC8E17A0ADF8002C6221 /* UIImageResize+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = A503FC8D17A0ADF8002C6221 /* UIImageResize+Rotate.m */; };
 		A5484A74179FBD1B0056E2E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5484A73179FBD1B0056E2E1 /* QuartzCore.framework */; };
 		A55CB6111799028B0089C0CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55CB6101799028B0089C0CD /* UIKit.framework */; };
 		A55CB6131799028B0089C0CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55CB6121799028B0089C0CD /* Foundation.framework */; };
@@ -25,8 +24,6 @@
 		A59D7CD917A0557F007F4153 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A59D7CD417A0557F007F4153 /* AppDelegate.m */; };
 		A59D7CDA17A0557F007F4153 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A59D7CD517A0557F007F4153 /* main.m */; };
 		A59D7CDE17A05598007F4153 /* RekognitionSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A59D7CDC17A05598007F4153 /* RekognitionSDK.m */; };
-		A59D7CE317A055B3007F4153 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A59D7CDF17A055B3007F4153 /* Base64.m */; };
-		A59D7CE417A055B3007F4153 /* NSDictionary+HTTPBody.m in Sources */ = {isa = PBXBuildFile; fileRef = A59D7CE117A055B3007F4153 /* NSDictionary+HTTPBody.m */; };
 		A59D7CE817A0560F007F4153 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59D7CE517A0560F007F4153 /* Default-568h@2x.png */; };
 		A59D7CE917A0560F007F4153 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A59D7CE617A0560F007F4153 /* Default.png */; };
 		A59D7CEA17A0560F007F4153 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59D7CE717A0560F007F4153 /* Default@2x.png */; };
@@ -40,8 +37,6 @@
 		A503FC8617A06013002C6221 /* empty_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = empty_pic.png; path = images/empty_pic.png; sourceTree = "<group>"; };
 		A503FC8717A06013002C6221 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = images/icon.png; sourceTree = "<group>"; };
 		A503FC8817A06013002C6221 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "images/icon@2x.png"; sourceTree = "<group>"; };
-		A503FC8C17A0ADF8002C6221 /* UIImageResize+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageResize+Rotate.h"; path = "SDK/supporting_files/UIImageResize+Rotate.h"; sourceTree = "<group>"; };
-		A503FC8D17A0ADF8002C6221 /* UIImageResize+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageResize+Rotate.m"; path = "SDK/supporting_files/UIImageResize+Rotate.m"; sourceTree = "<group>"; };
 		A5484A73179FBD1B0056E2E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A55CB60D1799028B0089C0CD /* ReKo SDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ReKo SDK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55CB6101799028B0089C0CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -57,10 +52,6 @@
 		A59D7CD517A0557F007F4153 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = example/main.m; sourceTree = "<group>"; };
 		A59D7CDC17A05598007F4153 /* RekognitionSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RekognitionSDK.m; path = SDK/RekognitionSDK.m; sourceTree = "<group>"; };
 		A59D7CDD17A05598007F4153 /* ReKognitionSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReKognitionSDK.h; path = SDK/ReKognitionSDK.h; sourceTree = "<group>"; };
-		A59D7CDF17A055B3007F4153 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = SDK/supporting_files/Base64.m; sourceTree = "<group>"; };
-		A59D7CE017A055B3007F4153 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = SDK/supporting_files/Base64.h; sourceTree = "<group>"; };
-		A59D7CE117A055B3007F4153 /* NSDictionary+HTTPBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+HTTPBody.m"; path = "SDK/supporting_files/NSDictionary+HTTPBody.m"; sourceTree = "<group>"; };
-		A59D7CE217A055B3007F4153 /* NSDictionary+HTTPBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+HTTPBody.h"; path = "SDK/supporting_files/NSDictionary+HTTPBody.h"; sourceTree = "<group>"; };
 		A59D7CE517A0560F007F4153 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "images/Default-568h@2x.png"; sourceTree = "<group>"; };
 		A59D7CE617A0560F007F4153 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = images/Default.png; sourceTree = "<group>"; };
 		A59D7CE717A0560F007F4153 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "images/Default@2x.png"; sourceTree = "<group>"; };
@@ -159,16 +150,10 @@
 		A5955BD7179B6CB900A02E01 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A59D7CE017A055B3007F4153 /* Base64.h */,
-				A59D7CDF17A055B3007F4153 /* Base64.m */,
 				08A4ED2D1813C220003F6F66 /* FaceThumbnailCropper.h */,
 				08A4ED2E1813C220003F6F66 /* FaceThumbnailCropper.m */,
-				A59D7CE217A055B3007F4153 /* NSDictionary+HTTPBody.h */,
-				A59D7CE117A055B3007F4153 /* NSDictionary+HTTPBody.m */,
 				A59D7CDD17A05598007F4153 /* ReKognitionSDK.h */,
 				A59D7CDC17A05598007F4153 /* RekognitionSDK.m */,
-				A503FC8C17A0ADF8002C6221 /* UIImageResize+Rotate.h */,
-				A503FC8D17A0ADF8002C6221 /* UIImageResize+Rotate.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -247,9 +232,6 @@
 				A59D7CD917A0557F007F4153 /* AppDelegate.m in Sources */,
 				A59D7CDA17A0557F007F4153 /* main.m in Sources */,
 				A59D7CDE17A05598007F4153 /* RekognitionSDK.m in Sources */,
-				A59D7CE317A055B3007F4153 /* Base64.m in Sources */,
-				A59D7CE417A055B3007F4153 /* NSDictionary+HTTPBody.m in Sources */,
-				A503FC8E17A0ADF8002C6221 /* UIImageResize+Rotate.m in Sources */,
 				08A4ED2F1813C220003F6F66 /* FaceThumbnailCropper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
