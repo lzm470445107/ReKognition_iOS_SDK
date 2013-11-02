@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lBo-76-uO9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lBo-76-uO9">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -18,17 +18,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="empty_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="sYN-sr-hhI">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="427"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="567"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="427" id="MqU-fk-GVX"/>
-                                </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="8" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="03W-eZ-rbY" userLabel="Label - Label">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="78" id="vdy-tf-pmo"/>
+                                    <constraint firstAttribute="height" constant="78" id="BwC-hJ-2ZW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,23 +48,24 @@
                                 </items>
                             </toolbar>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="RS3-2o-FV4">
-                                <rect key="frame" x="142" y="100" width="37" height="37"/>
+                                <rect key="frame" x="142" y="213" width="37" height="37"/>
                                 <color key="color" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="03W-eZ-rbY" firstAttribute="top" secondItem="3" secondAttribute="top" id="3rV-cz-tlI"/>
+                            <constraint firstItem="03W-eZ-rbY" firstAttribute="top" secondItem="sYN-sr-hhI" secondAttribute="top" id="3x0-9N-45D"/>
                             <constraint firstItem="d7i-2Y-6vE" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="7ev-1h-3Ti"/>
                             <constraint firstItem="d7i-2Y-6vE" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" id="9uw-Dr-RpA"/>
-                            <constraint firstItem="03W-eZ-rbY" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="JTD-li-chz"/>
-                            <constraint firstItem="RS3-2o-FV4" firstAttribute="top" secondItem="3" secondAttribute="top" constant="100" id="LdR-HT-L4Y"/>
+                            <constraint firstItem="03W-eZ-rbY" firstAttribute="leading" secondItem="d7i-2Y-6vE" secondAttribute="leading" id="DFe-MJ-wvO"/>
+                            <constraint firstItem="sYN-sr-hhI" firstAttribute="top" secondItem="3" secondAttribute="top" id="Lxp-ls-lza"/>
+                            <constraint firstItem="03W-eZ-rbY" firstAttribute="centerX" secondItem="RS3-2o-FV4" secondAttribute="centerX" id="MPK-7Z-pN3"/>
+                            <constraint firstItem="ZJk-0k-vjp" firstAttribute="top" secondItem="sYN-sr-hhI" secondAttribute="bottom" constant="1" id="OJ6-R7-CY2"/>
+                            <constraint firstItem="03W-eZ-rbY" firstAttribute="trailing" secondItem="sYN-sr-hhI" secondAttribute="trailing" id="XlA-FH-Axn"/>
+                            <constraint firstItem="RS3-2o-FV4" firstAttribute="top" secondItem="3" secondAttribute="top" constant="213" id="ZDa-oZ-QLd"/>
+                            <constraint firstItem="03W-eZ-rbY" firstAttribute="leading" secondItem="sYN-sr-hhI" secondAttribute="leading" id="bTG-a7-vB0"/>
                             <constraint firstItem="d7i-2Y-6vE" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" id="eBw-GB-cqk"/>
-                            <constraint firstItem="03W-eZ-rbY" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" id="gBZ-P7-XHE"/>
-                            <constraint firstItem="sYN-sr-hhI" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" id="lMt-uN-tAR"/>
-                            <constraint firstItem="sYN-sr-hhI" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="nCX-Gm-CG4"/>
-                            <constraint firstItem="sYN-sr-hhI" firstAttribute="top" secondItem="3" secondAttribute="top" id="qiz-H9-yZV"/>
-                            <constraint firstItem="RS3-2o-FV4" firstAttribute="centerX" secondItem="03W-eZ-rbY" secondAttribute="centerX" id="ufX-BQ-dhe"/>
+                            <constraint firstItem="03W-eZ-rbY" firstAttribute="trailing" secondItem="d7i-2Y-6vE" secondAttribute="trailing" id="yhm-HS-peN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hqx-nM-M2e"/>
@@ -84,10 +82,10 @@
         <!--Navigation Controller - ReKognition Example-->
         <scene sceneID="Vm8-9t-Yvb">
             <objects>
-                <navigationController title="ReKognition Example" id="lBo-76-uO9" sceneMemberID="viewController">
+                <navigationController title="ReKognition Example" navigationBarHidden="YES" id="lBo-76-uO9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="HIi-ET-J0l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

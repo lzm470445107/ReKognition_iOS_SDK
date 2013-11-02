@@ -33,7 +33,7 @@
 - (IBAction)btnReKognizeImageClicked:(id)sender
 {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose the following..." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Face Detection", @"Scene Understanding", nil];
-	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+	actionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
 	actionSheet.alpha = 0.80;
 	actionSheet.tag = 2;
 	[actionSheet showInView:self.view];
@@ -42,7 +42,7 @@
 - (IBAction)btnSelectImageClicked:(id)sender
 {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Image from..." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"Image Gallary", nil];
-	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+	actionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
 	actionSheet.alpha = 0.80;
 	actionSheet.tag = 1;
 	[actionSheet showInView:self.view];
