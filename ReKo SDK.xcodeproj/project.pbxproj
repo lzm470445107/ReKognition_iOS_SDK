@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		083E9C7A18223D4A00E1154D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083E9C7918223D4A00E1154D /* ImageIO.framework */; };
+		083E9C7C1824614A00E1154D /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 083E9C7B1824614A00E1154D /* test.jpg */; };
+		083E9C7F1824DE2C00E1154D /* FaceThumbnailCropper1.m in Sources */ = {isa = PBXBuildFile; fileRef = 083E9C7E1824DE2C00E1154D /* FaceThumbnailCropper1.m */; };
 		08A4ED2F1813C220003F6F66 /* FaceThumbnailCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A4ED2E1813C220003F6F66 /* FaceThumbnailCropper.m */; };
 		08A4ED311813D3EC003F6F66 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A4ED301813D3EC003F6F66 /* CoreImage.framework */; };
 		08A4ED331813D407003F6F66 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A4ED321813D407003F6F66 /* AssetsLibrary.framework */; };
@@ -30,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		083E9C7918223D4A00E1154D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		083E9C7B1824614A00E1154D /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = test.jpg; path = images/test.jpg; sourceTree = "<group>"; };
+		083E9C7D1824DE2C00E1154D /* FaceThumbnailCropper1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceThumbnailCropper1.h; sourceTree = "<group>"; };
+		083E9C7E1824DE2C00E1154D /* FaceThumbnailCropper1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceThumbnailCropper1.m; sourceTree = "<group>"; };
 		08A4ED2D1813C220003F6F66 /* FaceThumbnailCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceThumbnailCropper.h; sourceTree = "<group>"; };
 		08A4ED2E1813C220003F6F66 /* FaceThumbnailCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceThumbnailCropper.m; sourceTree = "<group>"; };
 		08A4ED301813D3EC003F6F66 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -64,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				083E9C7A18223D4A00E1154D /* ImageIO.framework in Frameworks */,
 				08A4ED331813D407003F6F66 /* AssetsLibrary.framework in Frameworks */,
 				08A4ED311813D3EC003F6F66 /* CoreImage.framework in Frameworks */,
 				A5484A74179FBD1B0056E2E1 /* QuartzCore.framework in Frameworks */,
@@ -96,6 +104,7 @@
 		A55CB60F1799028B0089C0CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				083E9C7918223D4A00E1154D /* ImageIO.framework */,
 				08A4ED321813D407003F6F66 /* AssetsLibrary.framework */,
 				08A4ED301813D3EC003F6F66 /* CoreImage.framework */,
 				A55CB6101799028B0089C0CD /* UIKit.framework */,
@@ -140,6 +149,7 @@
 		A5955BD6179B6C9500A02E01 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				083E9C7B1824614A00E1154D /* test.jpg */,
 				A503FC8617A06013002C6221 /* empty_pic.png */,
 				A503FC8717A06013002C6221 /* icon.png */,
 				A503FC8817A06013002C6221 /* icon@2x.png */,
@@ -150,6 +160,8 @@
 		A5955BD7179B6CB900A02E01 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				083E9C7D1824DE2C00E1154D /* FaceThumbnailCropper1.h */,
+				083E9C7E1824DE2C00E1154D /* FaceThumbnailCropper1.m */,
 				08A4ED2D1813C220003F6F66 /* FaceThumbnailCropper.h */,
 				08A4ED2E1813C220003F6F66 /* FaceThumbnailCropper.m */,
 				A59D7CDD17A05598007F4153 /* ReKognitionSDK.h */,
@@ -210,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55CB61B1799028B0089C0CD /* InfoPlist.strings in Resources */,
+				083E9C7C1824614A00E1154D /* test.jpg in Resources */,
 				A55CB62A1799028B0089C0CD /* MainStoryboard_iPhone.storyboard in Resources */,
 				A55CB62D1799028B0089C0CD /* MainStoryboard_iPad.storyboard in Resources */,
 				A59D7CE817A0560F007F4153 /* Default-568h@2x.png in Resources */,
@@ -233,6 +246,7 @@
 				A59D7CDA17A0557F007F4153 /* main.m in Sources */,
 				A59D7CDE17A05598007F4153 /* RekognitionSDK.m in Sources */,
 				08A4ED2F1813C220003F6F66 /* FaceThumbnailCropper.m in Sources */,
+				083E9C7F1824DE2C00E1154D /* FaceThumbnailCropper1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

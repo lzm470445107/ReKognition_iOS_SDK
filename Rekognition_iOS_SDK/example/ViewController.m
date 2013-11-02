@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FaceThumbnailCropper.h"
 #import "ReKognitionSDK.h"
 #import <QuartzCore/QuartzCore.h>
 #import "FaceThumbnailCropper.h"
@@ -91,6 +92,10 @@
                 case 0:
                 {
                     if(imageView.image){
+                        FaceThumbnailCropper *cropper = [[FaceThumbnailCropper alloc] init];
+                        NSData *imageData = UIImageJPEGRepresentation(imageView.image, 1.0f);
+                        [cropper cropFaceThumbnailsInNSData:imageData];
+                        return;
                         
                         // image x, y, width, height
                         float image_x, image_y, image_width, image_height;

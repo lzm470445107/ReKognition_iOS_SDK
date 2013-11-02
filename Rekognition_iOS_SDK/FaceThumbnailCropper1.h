@@ -10,8 +10,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FaceThumbnailCropper : NSObject
-- (NSData *)cropFaceThumbnailsInUIImage:(UIImage *)uiImage;
-- (NSData *)cropFaceThumbnailsInNSData:(NSData *)imageData;
-- (NSData *)cropFaceThumbnailsInCIImage:(CIImage *)ciImage ;
+@interface RKFace : NSObject
+@property (nonatomic, retain) UIImage* image;
+@property (nonatomic) CGRect bb;  // Normalized space (between 0.0f and 1.0f)
+@end
+
+@interface FaceThumbnailCropper1 : NSObject
++ (NSArray *)cropFaceThumbnails:(NSData *)image;
++ (NSArray*)cropFaceThumbnails:(NSData *)image returnBB:(BOOL)returnBB; // returns an Array of Face
 @end
