@@ -9,7 +9,7 @@ Updates:
    UIImageRotationFixer rotates the underlining CGImageRef of an UIImage to its up un-mirrored position. It is used to correct the source images whose orientation is other than upwards, like images taken from camera roll.
 2. ReKognitionResults provides data classes and parsing methods for ReKognition API response.
 
-===============================
+-----------------------------
 This ReKognition iOS SDK is intent for developers who want to integrate ReKognition API into their 
 iOS applications. The folder contains our ReKognition iOS SDKs (ReKognitionSDK.h and ReKognitionSDK.m under folder named SDK) and 
 a simple example to demo the SDK. For more information about our ReKognition API, please read our 
@@ -17,19 +17,22 @@ a simple example to demo the SDK. For more information about our ReKognition API
 
 The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 
-// ReKognition Post Jobs Function (to customize your own recognition functions)
+ReKognition Post Jobs Function (to customize your own recognition functions)
 ```objective-c
 + (NSData *)postReKognitionJobs:(NSDictionary *)jobsDictionary;
 ```
-// ReKognition Face Detect Function (if not set, jobs is "face_aggressive" by default)
-<pre><code>+ (RKFaceDetectResults *)RKFaceDetect:(UIImage*)image
+
+ReKognition Face Detect Function (if not set, jobs is "face_aggressive" by default)
+```objective-c
++ (RKFaceDetectResults *)RKFaceDetect:(UIImage*)image
                                  jobs:(NSString *)jobs;            // optional: "face_aggressive"
 + (RKFaceDetectResults *)RKFaceDetectWithUrl:(NSURL *)imageUrl
                                         jobs:(NSString *)jobs;     // optional: "face_aggressive"
-</code></pre>
+```
 
-// ReKognition Face Add Function
-<pre><code>+ (RKFaceDetectResults *)RKFaceAdd:(UIImage*)image
+ReKognition Face Add Function
+```objective-c
++ (RKFaceDetectResults *)RKFaceAdd:(UIImage*)image
                          nameSpace:(NSString *)name_space          // optional
                             userID:(NSString *)user_id             // optional
                                tag:(NSString *)tag                 // optional
@@ -39,30 +42,34 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
                                    userID:(NSString *)user_id     // optional
                                       tag:(NSString *)tag         // optional
                                      jobs:(NSString *)jobs;       // optional: "face_add"
-</code></pre>
+```
 
-// ReKognition Face Train Function
-<pre><code>+ (RKBaseResults *)RKFaceTrain:(NSString *)name_space        // optional
+ReKognition Face Train Function
+```objective-c
++ (RKBaseResults *)RKFaceTrain:(NSString *)name_space        // optional
                         userID:(NSString *)user_id           // optional
                           tags:(NSArray *)tags;              // optional
-</code></pre>
+```
 
-// ReKognition Face Cluster Function
-<pre><code>+ (RKFaceClusterResults *)RKFaceCluster:(NSString *)name_space      // optional
+ReKognition Face Cluster Function
+```objective-c
++ (RKFaceClusterResults *)RKFaceCluster:(NSString *)name_space      // optional
                                  userId:(NSString *)user_id         // optional
                          aggressiveness:(NSNumber *)aggressiveness; // optional: 40
-</code></pre>
+```
 
-// ReKognition Face Crawl Function
-<pre><code>+ (RKFaceCrawlResults *)RKFaceCrawl:(NSString *)fb_id
+ReKognition Face Crawl Function
+```objective-c
++ (RKFaceCrawlResults *)RKFaceCrawl:(NSString *)fb_id
                        access_token:(NSString *)access_token
                         crawl_fb_id:(NSArray *)friends_ids
                           nameSpace:(NSString *)name_space        // optional
                              userID:(NSString *)user_id;          // optional
-</code></pre>
+```
 
-// ReKognition Face Recognize Function
-<pre><code>+ (RKFaceDetectResults *)RKFaceRecognize:(UIImage *)image
+ReKognition Face Recognize Function
+```objective-c
++ (RKFaceDetectResults *)RKFaceRecognize:(UIImage *)image
                                nameSpace:(NSString *)name_space    // optional
                                   userID:(NSString *)user_id       // optional
                                     jobs:(NSString *)jobs          // optional: "face_recognize"
@@ -74,19 +81,21 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
                                            jobs:(NSString *)jobs           // optional: "face_recognize"
                                      num_return:(NSNumber *)num_return     // optional: 3
                                            tags:(NSArray *)tags;           // optional
-</code></pre>
+```
 
-// ReKognition Face Visualize Function
-<pre><code>+ (RKFaceVisualizeResults *)RKFaceVisualize:(NSArray *)tags                       // optional
+ReKognition Face Visualize Function
+```objective-c
++ (RKFaceVisualizeResults *)RKFaceVisualize:(NSArray *)tags                       // optional
                                        jobs:(NSString *)jobs                      // optional: "face_visualize_show_default_tag"
                                   nameSpace:(NSString *)name_space                // optional
                                      userID:(NSString *)user_id                   // optional
                              num_tag_return:(NSNumber *)num_tag_return            // optional
                       num_img_return_pertag:(NSNumber *)num_img_return_pertag;    // optional
-</code></pre>
+```
 
-// ReKognition Face Search Function
-<pre><code>+ (RKFaceDetectResults *)RKFaceSearch:(UIImage *)image
+ReKognition Face Search Function
+```objective-c
++ (RKFaceDetectResults *)RKFaceSearch:(UIImage *)image
                                  jobs:(NSString *)jobs                 // optional: "face_search"
                             nameSpace:(NSString *)name_space           // optional
                                userID:(NSString *)user_id              // optional
@@ -98,32 +107,36 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
                                       userID:(NSString *)user_id       // optional
                                   num_return:(NSNumber *)num_return    // optional
                                         tags:(NSArray *)tags;          // optional
-</code></pre>
+```
 
-// ReKognition Face Delete Function
-<pre><code>+ (RKBaseResults *)RKFaceDelete:(NSString *)tag                  // optional
+ReKognition Face Delete Function
+```objective-c
++ (RKBaseResults *)RKFaceDelete:(NSString *)tag                  // optional
                      imageIndex:(NSArray *)img_index_array       // optional
                       nameSpace:(NSString *)name_space           // optional
                          userID:(NSString *)user_id;             // optional
-</code></pre>
+```
 
-// ReKognition Face Rename/Merge/Assign Function
-<pre><code>+ (RKBaseResults *)RKFaceRenameOrMergeTag:(NSString *)oldTag
+ReKognition Face Rename/Merge/Assign Function
+```objective-c
++ (RKBaseResults *)RKFaceRenameOrMergeTag:(NSString *)oldTag
                                   withTag:(NSString *)newTag
                             selectedFaces:(NSArray *)img_index_array     // optional
                                 nameSpace:(NSString *)name_space         // optional
                                    userID:(NSString *)user_id;           // optional
-</code></pre>
+```
 
-// ReKognition Face Stats
-<pre><code>+ (RKNameSpaceStatsResults *)RKNameSpaceStats;
+ReKognition Face Stats
+```objective-c
++ (RKNameSpaceStatsResults *)RKNameSpaceStats;
 + (RKUserIdStatsResults *)RKUserIdStats:(NSString *)name_space;
-</code></pre>
+```
 
-// ReKognition Scene Understadning Function
-<pre><code>+ (RKSceneUnderstandingResults *)RKSceneUnderstanding:(UIImage *)image;
+ReKognition Scene Understadning Function
+```objective-c
++ (RKSceneUnderstandingResults *)RKSceneUnderstanding:(UIImage *)image;
 + (RKSceneUnderstandingResults *)RKSceneUnderstandingWithUrl:(NSURL *)imageUrl;
-</code></pre>
+```
 
 Configuration:
 ===============================
