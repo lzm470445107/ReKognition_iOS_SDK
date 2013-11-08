@@ -9,72 +9,123 @@ a simple example to demo the SDK. For more information about our ReKognition API
 The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 
 // ReKognition Post Jobs Function (to customize your own recognition functions)
-<pre><code>+ (NSString*) postReKognitionJobs:(NSDictionary *) jobsDictionary;
+<pre><code>+ (NSData *)postReKognitionJobs:(NSDictionary *)jobsDictionary;
 </code></pre>
 
-// ReKognition Face Detect Function (the image you want to recognize and the scaling factor for the image)
-<pre><code>+ (NSString *) RKFaceDetect: (UIImage*) image
-                      scale: (CGFloat) scale;
+// ReKognition Face Detect Function (if not set, jobs is "face_aggressive" by default)
+<pre><code>
++ (RKFaceDetectResults *)RKFaceDetect:(UIImage*)image
+                                 jobs:(NSString *)jobs;            // optional: "face_aggressive"
++ (RKFaceDetectResults *)RKFaceDetectWithUrl:(NSURL *)imageUrl
+                                        jobs:(NSString *)jobs;     // optional: "face_aggressive"
 </code></pre>
 
 // ReKognition Face Add Function
-<pre><code>+ (NSString *) RKFaceAdd: (UIImage*) image
-                   scale: (CGFloat) scale
-               nameSpace: (NSString *) name_space
-                  userID: (NSString *) user_id
-                     tag: (NSString *) tag;
+<pre><code>
++ (RKFaceDetectResults *)RKFaceAdd:(UIImage*)image
+                         nameSpace:(NSString *)name_space          // optional
+                            userID:(NSString *)user_id             // optional
+                               tag:(NSString *)tag                 // optional
+                              jobs:(NSString *)jobs;               // optional: "face_add"
++ (RKFaceDetectResults *)RKFaceAddWithUrl:(NSURL *)imageUrl
+                                nameSpace:(NSString *)name_space  // optional
+                                   userID:(NSString *)user_id     // optional
+                                      tag:(NSString *)tag         // optional
+                                     jobs:(NSString *)jobs;       // optional: "face_add"
 </code></pre>
 
 // ReKognition Face Train Function
-<pre><code>+ (NSString *) RKFaceTrain:(NSString *) name_space
-                    userID:(NSString *) user_id;
+<pre><code>
++ (RKBaseResults *)RKFaceTrain:(NSString *)name_space        // optional
+                        userID:(NSString *)user_id           // optional
+                          tags:(NSArray *)tags;              // optional
 </code></pre>
 
-// ReKognition Face Recognize Function
-<pre><code>+ (NSString *) RKFaceRecognize: (UIImage *) image
-                         scale: (CGFloat) scale
-                     nameSpace: (NSString *) name_space
-                        userID: (NSString *) user_id;
-</code></pre>
-
-// ReKognition Face Rename Function
-<pre><code>+ (NSString *) RKFaceRename: (NSString *) oldTag
-                    withTag: (NSString *) newTag
-                  nameSpace: (NSString *) name_space
-                     userID: (NSString *) user_id;
+// ReKognition Face Cluster Function
+<pre><code>
++ (RKFaceClusterResults *)RKFaceCluster:(NSString *)name_space      // optional
+                                 userId:(NSString *)user_id         // optional
+                         aggressiveness:(NSNumber *)aggressiveness; // optional: 40
 </code></pre>
 
 // ReKognition Face Crawl Function
-<pre><code>+ (NSString *) RKFaceCrawl: (NSString *) access_token
-                 nameSpace: (NSString *) name_space
-                    userID: (NSString *) user_id
-               crawl_fb_id: (NSArray *) crawl_fb_id_array
-                     fb_id: (NSString *) fb_id;
+<pre><code>
++ (RKFaceCrawlResults *)RKFaceCrawl:(NSString *)fb_id
+                       access_token:(NSString *)access_token
+                        crawl_fb_id:(NSArray *)friends_ids
+                          nameSpace:(NSString *)name_space        // optional
+                             userID:(NSString *)user_id;          // optional
+</code></pre>
+
+// ReKognition Face Recognize Function
+<pre><code>
++ (RKFaceDetectResults *)RKFaceRecognize:(UIImage *)image
+                               nameSpace:(NSString *)name_space    // optional
+                                  userID:(NSString *)user_id       // optional
+                                    jobs:(NSString *)jobs          // optional: "face_recognize"
+                              num_return:(NSNumber *)num_return    // optional: 3
+                                    tags:(NSArray *)tags;          // optional
++ (RKFaceDetectResults *)RKFaceRecognizeWithUrl:(NSURL *)imageUrl
+                                      nameSpace:(NSString *)name_space     // optional
+                                         userID:(NSString *)user_id        // optional
+                                           jobs:(NSString *)jobs           // optional: "face_recognize"
+                                     num_return:(NSNumber *)num_return     // optional: 3
+                                           tags:(NSArray *)tags;           // optional
 </code></pre>
 
 // ReKognition Face Visualize Function
-<pre><code>+ (NSString *) RKFaceVisualize: (NSArray *) tag_array
-                     nameSpace: (NSString *) name_space
-                        userID: (NSString *) user_id;
+<pre><code>
++ (RKFaceVisualizeResults *)RKFaceVisualize:(NSArray *)tags                       // optional
+                                       jobs:(NSString *)jobs                      // optional: "face_visualize_show_default_tag"
+                                  nameSpace:(NSString *)name_space                // optional
+                                     userID:(NSString *)user_id                   // optional
+                             num_tag_return:(NSNumber *)num_tag_return            // optional
+                      num_img_return_pertag:(NSNumber *)num_img_return_pertag;    // optional
 </code></pre>
 
 // ReKognition Face Search Function
-<pre><code>+ (NSString *) RKFaceSearch: (UIImage *) image
-                      scale: (CGFloat) scale
-                  nameSpace: (NSString *) name_space
-                     userID: (NSString *) user_id;
+<pre><code>
++ (RKFaceDetectResults *)RKFaceSearch:(UIImage *)image
+                                 jobs:(NSString *)jobs                 // optional: "face_search"
+                            nameSpace:(NSString *)name_space           // optional
+                               userID:(NSString *)user_id              // optional
+                           num_return:(NSNumber *)num_return           // optional
+                                 tags:(NSArray *)tags;                 // optional
++ (RKFaceDetectResults *)RKFaceSearchWithUrl:(NSURL *)imageUrl
+                                        jobs:(NSString *)jobs          // optional: "face_search"
+                                   nameSpace:(NSString *)name_space    // optional
+                                      userID:(NSString *)user_id       // optional
+                                  num_return:(NSNumber *)num_return    // optional
+                                        tags:(NSArray *)tags;          // optional
 </code></pre>
 
 // ReKognition Face Delete Function
-<pre><code>+ (NSString *) RKFaceDelete: (NSString *) tag
-                 imageIndex: (NSArray *) img_index_array
-                  nameSpace: (NSString *) name_space
-                     userID: (NSString *) user_id;
+<pre><code>
++ (RKBaseResults *)RKFaceDelete:(NSString *)tag                  // optional
+                     imageIndex:(NSArray *)img_index_array       // optional
+                      nameSpace:(NSString *)name_space           // optional
+                         userID:(NSString *)user_id;             // optional
+
+
+// ReKognition Face Rename/Merge/Assign Function
+<pre><code>
++ (RKBaseResults *)RKFaceRenameOrMergeTag:(NSString *)oldTag
+                                  withTag:(NSString *)newTag
+                            selectedFaces:(NSArray *)img_index_array     // optional
+                                nameSpace:(NSString *)name_space         // optional
+                                   userID:(NSString *)user_id;           // optional
+</code></pre>
+
+// ReKognition Face Stats
+<pre><code>
++ (RKNameSpaceStatsResults *)RKNameSpaceStats;
++ (RKUserIdStatsResults *)RKUserIdStats:(NSString *)name_space;
 </code></pre>
 
 // ReKognition Scene Understadning Function
-<pre><code>+ (NSString *) RKSceneUnderstanding: (UIImage *) image
-                              scale: (CGFloat) scale;
+<pre><code>
++ (RKSceneUnderstandingResults *)RKSceneUnderstanding:(UIImage *)image;
++ (RKSceneUnderstandingResults *)RKSceneUnderstandingWithUrl:(NSURL *)imageUrl;
 </code></pre>
 
 Configuration:
