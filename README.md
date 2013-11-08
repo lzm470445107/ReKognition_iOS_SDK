@@ -13,16 +13,14 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 </code></pre>
 
 // ReKognition Face Detect Function (if not set, jobs is "face_aggressive" by default)
-<pre><code>
-+ (RKFaceDetectResults *)RKFaceDetect:(UIImage*)image
+<pre><code>+ (RKFaceDetectResults *)RKFaceDetect:(UIImage*)image
                                  jobs:(NSString *)jobs;            // optional: "face_aggressive"
 + (RKFaceDetectResults *)RKFaceDetectWithUrl:(NSURL *)imageUrl
                                         jobs:(NSString *)jobs;     // optional: "face_aggressive"
 </code></pre>
 
 // ReKognition Face Add Function
-<pre><code>
-+ (RKFaceDetectResults *)RKFaceAdd:(UIImage*)image
+<pre><code>+ (RKFaceDetectResults *)RKFaceAdd:(UIImage*)image
                          nameSpace:(NSString *)name_space          // optional
                             userID:(NSString *)user_id             // optional
                                tag:(NSString *)tag                 // optional
@@ -35,22 +33,19 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 </code></pre>
 
 // ReKognition Face Train Function
-<pre><code>
-+ (RKBaseResults *)RKFaceTrain:(NSString *)name_space        // optional
+<pre><code>+ (RKBaseResults *)RKFaceTrain:(NSString *)name_space        // optional
                         userID:(NSString *)user_id           // optional
                           tags:(NSArray *)tags;              // optional
 </code></pre>
 
 // ReKognition Face Cluster Function
-<pre><code>
-+ (RKFaceClusterResults *)RKFaceCluster:(NSString *)name_space      // optional
+<pre><code>+ (RKFaceClusterResults *)RKFaceCluster:(NSString *)name_space      // optional
                                  userId:(NSString *)user_id         // optional
                          aggressiveness:(NSNumber *)aggressiveness; // optional: 40
 </code></pre>
 
 // ReKognition Face Crawl Function
-<pre><code>
-+ (RKFaceCrawlResults *)RKFaceCrawl:(NSString *)fb_id
+<pre><code>+ (RKFaceCrawlResults *)RKFaceCrawl:(NSString *)fb_id
                        access_token:(NSString *)access_token
                         crawl_fb_id:(NSArray *)friends_ids
                           nameSpace:(NSString *)name_space        // optional
@@ -58,8 +53,7 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 </code></pre>
 
 // ReKognition Face Recognize Function
-<pre><code>
-+ (RKFaceDetectResults *)RKFaceRecognize:(UIImage *)image
+<pre><code>+ (RKFaceDetectResults *)RKFaceRecognize:(UIImage *)image
                                nameSpace:(NSString *)name_space    // optional
                                   userID:(NSString *)user_id       // optional
                                     jobs:(NSString *)jobs          // optional: "face_recognize"
@@ -74,8 +68,7 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 </code></pre>
 
 // ReKognition Face Visualize Function
-<pre><code>
-+ (RKFaceVisualizeResults *)RKFaceVisualize:(NSArray *)tags                       // optional
+<pre><code>+ (RKFaceVisualizeResults *)RKFaceVisualize:(NSArray *)tags                       // optional
                                        jobs:(NSString *)jobs                      // optional: "face_visualize_show_default_tag"
                                   nameSpace:(NSString *)name_space                // optional
                                      userID:(NSString *)user_id                   // optional
@@ -84,8 +77,7 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 </code></pre>
 
 // ReKognition Face Search Function
-<pre><code>
-+ (RKFaceDetectResults *)RKFaceSearch:(UIImage *)image
+<pre><code>+ (RKFaceDetectResults *)RKFaceSearch:(UIImage *)image
                                  jobs:(NSString *)jobs                 // optional: "face_search"
                             nameSpace:(NSString *)name_space           // optional
                                userID:(NSString *)user_id              // optional
@@ -100,16 +92,14 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 </code></pre>
 
 // ReKognition Face Delete Function
-<pre><code>
-+ (RKBaseResults *)RKFaceDelete:(NSString *)tag                  // optional
+<pre><code>+ (RKBaseResults *)RKFaceDelete:(NSString *)tag                  // optional
                      imageIndex:(NSArray *)img_index_array       // optional
                       nameSpace:(NSString *)name_space           // optional
                          userID:(NSString *)user_id;             // optional
-
+</code></pre>
 
 // ReKognition Face Rename/Merge/Assign Function
-<pre><code>
-+ (RKBaseResults *)RKFaceRenameOrMergeTag:(NSString *)oldTag
+<pre><code>+ (RKBaseResults *)RKFaceRenameOrMergeTag:(NSString *)oldTag
                                   withTag:(NSString *)newTag
                             selectedFaces:(NSArray *)img_index_array     // optional
                                 nameSpace:(NSString *)name_space         // optional
@@ -117,14 +107,12 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 </code></pre>
 
 // ReKognition Face Stats
-<pre><code>
-+ (RKNameSpaceStatsResults *)RKNameSpaceStats;
+<pre><code>+ (RKNameSpaceStatsResults *)RKNameSpaceStats;
 + (RKUserIdStatsResults *)RKUserIdStats:(NSString *)name_space;
 </code></pre>
 
 // ReKognition Scene Understadning Function
-<pre><code>
-+ (RKSceneUnderstandingResults *)RKSceneUnderstanding:(UIImage *)image;
+<pre><code>+ (RKSceneUnderstandingResults *)RKSceneUnderstanding:(UIImage *)image;
 + (RKSceneUnderstandingResults *)RKSceneUnderstandingWithUrl:(NSURL *)imageUrl;
 </code></pre>
 
