@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface UIImageRotationFixer : NSObject
-// Rotate the CGImageRef of an UIImage to the up un-mirrored position. This function is potentially expensive since its redraws the whole bitmap.
+// Rotate the underlining CGImageRef of an UIImage to its up un-mirrored position. This function is potentially expensive since its redraws the whole bitmap.
 + (UIImage *)fixOrientation:(UIImage *)rawImage;
 @end

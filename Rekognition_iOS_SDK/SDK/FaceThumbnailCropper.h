@@ -7,7 +7,7 @@
 //
 //  The helper class that crops face thumbnails from large images, merges thumbnails into a single compressed JPEG to be used by Rekognition API. The thumbnail size is highly optimized by including only the area sensitive to the backend algorithm.
 //
-//  After heard back from the server the result class needs be passed to correctFaceDetectResult: to transform its coordinates to be relative the original image.
+//  After heard back from the server the result class needs be passed to correctFaceDetectResult: to restore its coordinates to be relative the original image.
 
 
 #import <Foundation/Foundation.h>
