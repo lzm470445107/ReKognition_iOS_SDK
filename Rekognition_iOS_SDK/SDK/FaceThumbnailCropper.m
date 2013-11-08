@@ -20,25 +20,35 @@
 const float THUMBNAIL_MAX_EDGE = 200.0;
 const float MERGED_IMAGE_MAX_WIDTH = 800.0;
 
-- (NSData *)cropFaceThumbnailsInUIImage:(UIImage *)uiImage {
-//    [self saveUIImageToAlbum:uiImage];
-    NSLog(@"%d", [uiImage imageOrientation]);
-    
-    CIImage *ciImage = uiImage.CIImage;
-    if (!ciImage) {
-        ciImage = [CIImage imageWithCGImage:uiImage.CGImage];
-    }
-    return [self cropFaceThumbnailsInCIImage:ciImage];
+
+- (UIImage *)cropFaceThumbnailsInUIImage:(UIImage *)uiImage {
+    NSData *imageData = UIImageJPEGRepresentation(uiImage, 1.0);
+    return [self cropFaceThumbnailsInNSData:imageData];
 }
 
 
-- (NSData *)cropFaceThumbnailsInNSData:(NSData *)imageData {
+- (UIImage *)cropFaceThumbnailsInNSData:(NSData *)imageData {
     CIImage *ciImage = [CIImage imageWithData:imageData];
     return [self cropFaceThumbnailsInCIImage:ciImage];
 }
 
 
-- (NSData *)cropFaceThumbnailsInCIImage:(CIImage *)ciImage {
+- (UIImageOrientation)UIImageOrientationForCGImageOrienation:(NSUInteger)orientation {
+    switch (orientation) {
+        case 1: return UIImageOrientationUp;
+        case 2: return UIImageOrientationUpMirrored;
+        case 3: return UIImageOrientationDown;
+        case 4: return UIImageOrientationDownMirrored;
+        case 5: return UIImageOrientationLeftMirrored;
+        case 6: return UIImageOrientationRight;
+        case 7: return UIImageOrientationRightMirrored;
+        case 8: return UIImageOrientationLeft;
+    }
+    return UIImageOrientationUp;
+}
+
+
+- (UIImage *)cropFaceThumbnailsInCIImage:(CIImage *)ciImage {
     CGFloat rawImageWidth = ciImage.extent.size.width;
     CGFloat rawImageHeight = ciImage.extent.size.height;
     
@@ -48,7 +58,7 @@ const float MERGED_IMAGE_MAX_WIDTH = 800.0;
     NSLog(@"CGOrientation: %@", cgOrienation);
     if (cgOrienation == nil) {
         cgOrienation = @1;
-    }
+    }    
     NSDictionary *imageOptions = @{ CIDetectorImageOrientation : cgOrienation};
     NSArray *features = [faceDetector featuresInImage:ciImage options:imageOptions];
     
@@ -58,13 +68,11 @@ const float MERGED_IMAGE_MAX_WIDTH = 800.0;
     for (int i = 0; i < [features count]; i++) {
         NSLog(@"%d", i);
         CIFaceFeature *ff = features[i];
-//        CIImage *temp = [ciImage imageByCroppingToRect:ff.bounds];
-//        [self saveUIImageToAlbum:[UIImage imageWithCIImage:temp]];
         
         CGFloat width = ff.bounds.size.width * 2;
         CGFloat height = ff.bounds.size.height * 2;
         CGFloat x0 = ff.bounds.origin.x - ff.bounds.size.width * 0.5;
-        CGFloat y0 = ciImage.extent.size.height - ff.bounds.origin.y - ff.bounds.size.height * 1.5;
+        CGFloat y0 = ciImage.extent.size.height - ff.bounds.origin.y - ff.bounds.size.height * 1.7;
         CGFloat x1 = x0 + width;
         CGFloat y1 = y0 + height;
         x0 = (x0 < 0) ? 0 : x0;
@@ -87,6 +95,7 @@ const float MERGED_IMAGE_MAX_WIDTH = 800.0;
         }
         
         if (curX + formattedFaceSize.width > MERGED_IMAGE_MAX_WIDTH) {
+            // Break line.
             mergedImageWidth = MAX(mergedImageWidth, curX);
             curX = 0;
             curY += curRowHeight;
@@ -109,13 +118,55 @@ const float MERGED_IMAGE_MAX_WIDTH = 800.0;
         CIImage *ciThumbnail = [ciImage imageByCroppingToRect:ciRect];
         UIImage *thumbnail = [UIImage imageWithCIImage:ciThumbnail];
         [thumbnail drawInRect:formattedFaceRect];
-//        [self saveImageToAlbum:thumbnail];
+//        [self saveUIImageToAlbum:thumbnail];
     }
     UIImage *mergedImage = UIGraphicsGetImageFromCurrentImageContext();
-    [self saveUIImageToAlbum:mergedImage];
     UIGraphicsEndImageContext();
+    [self saveUIImageToAlbum:mergedImage];
     
-    return UIImageJPEGRepresentation(mergedImage, 1.0f);
+    return mergedImage;
+}
+
+
+- (void)correctFaceDetectResult:(RKFaceDetectResults *)faceDetectResult {
+    for (FaceDetectItem *faceDetect in faceDetectResult.faceDetectOrALikeItems) {
+        for (int i = 0; i < [self.formattedFaceRectArray count]; i++) {
+            CGRect formattedRect = [(NSValue *)self.formattedFaceRectArray[i] CGRectValue];
+            if (faceDetect.nose.x > formattedRect.origin.x &&
+                faceDetect.nose.x < formattedRect.origin.x + formattedRect.size.width &&
+                faceDetect.nose.y > formattedRect.origin.y &&
+                faceDetect.nose.y < formattedRect.origin.y + formattedRect.size.height) {
+                CGRect rawRect = [(NSValue *)self.rawFaceRectArray[i] CGRectValue];
+                faceDetect.boundingbox = CGRectMake(
+                                                    (faceDetect.boundingbox.origin.x - formattedRect.origin.x) / formattedRect.size.width * rawRect.size.width + rawRect.origin.x,
+                                                    (faceDetect.boundingbox.origin.y - formattedRect.origin.y) / formattedRect.size.height * rawRect.size.height + rawRect.origin.y,
+                                                    faceDetect.boundingbox.size.width / formattedRect.size.width * rawRect.size.width,
+                                                    faceDetect.boundingbox.size.height / formattedRect.size.height * rawRect.size.height
+                                                    );
+                faceDetect.eye_left = CGPointMake(
+                                                  (faceDetect.eye_left.x - formattedRect.origin.x) / formattedRect.size.width *rawRect.size.width + rawRect.origin.x,
+                                                  (faceDetect.eye_left.y - formattedRect.origin.y) / formattedRect.size.height * rawRect.size.height + rawRect.origin.y
+                                                  );
+                faceDetect.eye_right = CGPointMake(
+                                                   (faceDetect.eye_right.x - formattedRect.origin.x) / formattedRect.size.width *rawRect.size.width + rawRect.origin.x,
+                                                   (faceDetect.eye_right.y - formattedRect.origin.y) / formattedRect.size.height * rawRect.size.height + rawRect.origin.y
+                                                   );
+                faceDetect.nose = CGPointMake(
+                                              (faceDetect.nose.x - formattedRect.origin.x) / formattedRect.size.width *rawRect.size.width + rawRect.origin.x,
+                                              (faceDetect.nose.y - formattedRect.origin.y) / formattedRect.size.height * rawRect.size.height + rawRect.origin.y
+                                              );
+                faceDetect.mouth_l = CGPointMake(
+                                                 (faceDetect.mouth_l.x - formattedRect.origin.x) / formattedRect.size.width *rawRect.size.width + rawRect.origin.x,
+                                                 (faceDetect.mouth_l.y - formattedRect.origin.y) / formattedRect.size.height * rawRect.size.height + rawRect.origin.y
+                                                 );
+                faceDetect.mouth_r = CGPointMake(
+                                                 (faceDetect.mouth_r.x - formattedRect.origin.x) / formattedRect.size.width *rawRect.size.width + rawRect.origin.x,
+                                                 (faceDetect.mouth_r.y - formattedRect.origin.y) / formattedRect.size.height * rawRect.size.height + rawRect.origin.y
+                                                 );
+                break;
+            }
+        }
+    }
 }
 
 

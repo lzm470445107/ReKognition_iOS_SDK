@@ -15,7 +15,7 @@ static NSString *API_Key = @"1234";
 static NSString *API_Secret = @"5678";
 
 
-+ (NSData *) dictionaryToUrlData:(NSDictionary *)dict {
++ (NSData *)dictionaryToUrlData:(NSDictionary *)dict {
     NSMutableString *bodyString = [[NSMutableString alloc] init];
     NSArray *keys = [dict allKeys];
     if ([dict count] > 0) {
@@ -28,7 +28,7 @@ static NSString *API_Secret = @"5678";
 }
 
 
-+ (NSString*) postReKognitionJobs:(NSDictionary *) jobsDictionary {
++ (NSData *)postReKognitionJobs:(NSDictionary *) jobsDictionary {
     NSData *data = [ReKognitionSDK dictionaryToUrlData:jobsDictionary];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
@@ -43,13 +43,12 @@ static NSString *API_Secret = @"5678";
         NSLog(@"Error getting response: HTTP status code: %i, Error: %@", [responseCode statusCode], [error localizedDescription]);
         return nil;
     }
-    NSString *result = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-    return result;
+    return oResponseData;
 }
 
 
 // ReKognition Face Detect Function
-+ (NSString *)RKFaceDetect:(UIImage *)image jobs:(NSString *)jobs {
++ (RKFaceDetectResults *)RKFaceDetect:(UIImage *)image jobs:(NSString *)jobs {
     NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
     NSString *encodedString = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
     encodedString = [encodedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
@@ -59,27 +58,29 @@ static NSString *API_Secret = @"5678";
                                       @"api_secret": API_Secret,
                                       @"jobs": jobsString,
                                       @"base64": encodedString};
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceDetectResponse:data];
 }
 
 
-+ (NSString *)RKFaceDetectWithUrl:(NSURL *)imageUrl jobs:(NSString *)jobs {
++ (RKFaceDetectResults *)RKFaceDetectWithUrl:(NSURL *)imageUrl jobs:(NSString *)jobs {
     NSString *jobsString = jobs ? jobs : @"face_aggressive";
     NSDictionary * jobsDictionary = @{@"api_key": API_Key,
                                       @"api_secret": API_Secret,
                                       @"jobs": jobsString,
                                       @"urls": [imageUrl absoluteString]};
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceDetectResponse:data];
 }
 
 
 // ReKognition Face Add Function
-+ (NSString *)RKFaceAdd:(UIImage *)image nameSpace:(NSString *)name_space userID:(NSString *)user_id tag:(NSString *)tag jobs:(NSString *)jobs {
++ (RKFaceDetectResults *)RKFaceAdd:(UIImage *)image nameSpace:(NSString *)name_space userID:(NSString *)user_id tag:(NSString *)tag jobs:(NSString *)jobs {
     NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
     NSString *encodedString = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
     encodedString = [encodedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     
-    NSString *jobsString = jobs ? jobs : @"face_add_aggressive";
+    NSString *jobsString = jobs ? jobs : @"face_add";
     NSMutableDictionary * jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
                                                                                            @"api_secret": API_Secret,
                                                                                            @"jobs": jobsString,
@@ -93,11 +94,12 @@ static NSString *API_Secret = @"5678";
     if (tag) {
         [jobsDictionary setObject:tag forKey:@"tag"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceAddResponse:data];
 }
 
-+ (NSString *)RKFaceAddWithUrl:(NSURL *)imageUrl nameSpace:(NSString *)name_space userID:(NSString *)user_id tag:(NSString *)tag jobs:(NSString *)jobs {
-    NSString *jobsString = jobs ? jobs : @"face_add_aggressive";
++ (RKFaceDetectResults *)RKFaceAddWithUrl:(NSURL *)imageUrl nameSpace:(NSString *)name_space userID:(NSString *)user_id tag:(NSString *)tag jobs:(NSString *)jobs {
+    NSString *jobsString = jobs ? jobs : @"face_add";
     NSMutableDictionary * jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
                                                                                            @"api_secret": API_Secret,
                                                                                            @"jobs": jobsString,
@@ -111,12 +113,13 @@ static NSString *API_Secret = @"5678";
     if (tag) {
         [jobsDictionary setObject:tag forKey:@"tag"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceAddResponse:data];
 }
 
 
 //ReKognition Face Train Function
-+ (NSString *)RKFaceTrain:(NSString *)name_space userID:(NSString *)user_id tags:(NSArray *)tags {
++ (RKBaseResults *)RKFaceTrain:(NSString *)name_space userID:(NSString *)user_id tags:(NSArray *)tags {
     NSMutableDictionary * jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
                                                                                            @"api_secret": API_Secret}];
     if (tags) {
@@ -131,12 +134,13 @@ static NSString *API_Secret = @"5678";
     if (user_id) {
         [jobsDictionary setObject:user_id forKey:@"user_id"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceTrainResponse:data];
 }
 
 
 // ReKognition Face Cluster Function
-+ (NSString *)RKFaceCluster:(NSString *)name_space userId:(NSString *)user_id aggressiveness:(NSNumber *)aggressiveness {
++ (RKFaceClusterResults *)RKFaceCluster:(NSString *)name_space userId:(NSString *)user_id aggressiveness:(NSNumber *)aggressiveness {
     NSMutableDictionary * jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
                                                                                            @"api_secret": API_Secret,
                                                                                            @"jobs": @"face_cluster"}];
@@ -149,12 +153,13 @@ static NSString *API_Secret = @"5678";
     if (aggressiveness) {
         [jobsDictionary setObject:aggressiveness forKey:@"aggressiveness"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceClusterResponse:data];
 }
 
 
 // ReKognition Face Crawl Function
-+ (NSString *) RKFaceCrawl:(NSString *)fb_id access_token:(NSString *)access_token crawl_fb_id:(NSArray *)friends_ids nameSpace:(NSString *)name_space userID:(NSString *)user_id {
++ (RKFaceCrawlResults *) RKFaceCrawl:(NSString *)fb_id access_token:(NSString *)access_token crawl_fb_id:(NSArray *)friends_ids nameSpace:(NSString *)name_space userID:(NSString *)user_id {
     NSString *temp_string = [friends_ids componentsJoinedByString:@";"];
     NSString *crawl_string = [@"face_crawl_" stringByAppendingFormat:@"[%@]", temp_string];
     NSMutableDictionary * jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
@@ -168,12 +173,13 @@ static NSString *API_Secret = @"5678";
     if (user_id) {
         [jobsDictionary setObject:user_id forKey:@"user_id"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceCrawlResponse:data];
 }
 
 
 //ReKognition Face Recognize Function
-+ (NSString *)RKFaceRecognize:(UIImage *)image nameSpace:(NSString *)name_space userID:(NSString *)user_id jobs:(NSString *)jobs num_return:(NSNumber *)num_return tags:(NSArray *)tags {
++ (RKFaceDetectResults *)RKFaceRecognize:(UIImage *)image nameSpace:(NSString *)name_space userID:(NSString *)user_id jobs:(NSString *)jobs num_return:(NSNumber *)num_return tags:(NSArray *)tags {
     NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
     NSString *encodedString = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
     encodedString = [encodedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
@@ -195,10 +201,11 @@ static NSString *API_Secret = @"5678";
     if (tags) {
         [jobsDictionary setObject:[tags componentsJoinedByString:@";"] forKey:@"tags"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceRecognizeResponse:data];
 }
 
-+ (NSString *)RKFaceRecognizeWithUrl:(NSURL *)imageUrl nameSpace:(NSString *)name_space userID:(NSString *)user_id jobs:(NSString *)jobs num_return:(NSNumber *)num_return tags:(NSArray *)tags {
++ (RKFaceDetectResults *)RKFaceRecognizeWithUrl:(NSURL *)imageUrl nameSpace:(NSString *)name_space userID:(NSString *)user_id jobs:(NSString *)jobs num_return:(NSNumber *)num_return tags:(NSArray *)tags {
     NSString *jobsString = jobs ? jobs : @"face_recognize";
     NSMutableDictionary * jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
                                                                                            @"api_secret": API_Secret,
@@ -216,12 +223,13 @@ static NSString *API_Secret = @"5678";
     if (tags) {
         [jobsDictionary setObject:[tags componentsJoinedByString:@";"] forKey:@"tags"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceRecognizeResponse:data];
 }
 
 
 // ReKognition Face Visualize Function
-+ (NSString *)RKFaceVisualize:(NSArray *)tags jobs:(NSString *)jobs nameSpace:(NSString *)name_space userID:(NSString *)user_id num_tag_return:(NSNumber *)num_tag_return num_img_return_pertag:(NSNumber *)num_img_return_pertag {
++ (RKFaceVisualizeResults *)RKFaceVisualize:(NSArray *)tags jobs:(NSString *)jobs nameSpace:(NSString *)name_space userID:(NSString *)user_id num_tag_return:(NSNumber *)num_tag_return num_img_return_pertag:(NSNumber *)num_img_return_pertag {
     NSString *jobsString = jobs ? jobs : @"face_visualize_show_default_tag";
     NSMutableDictionary * jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
                                                                                            @"api_secret": API_Secret,
@@ -241,12 +249,13 @@ static NSString *API_Secret = @"5678";
     if (num_img_return_pertag) {
         [jobsDictionary setObject:num_img_return_pertag forKey:@"num_img_return_pertag"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceVisualizeResponse:data];
 }
 
 
 // ReKognition Face Search Function
-+ (NSString *)RKFaceSearch:(UIImage *)image jobs:(NSString *)jobs nameSpace:(NSString *)name_space userID:(NSString *)user_id num_return:(NSNumber *)num_return tags:(NSArray *)tags {
++ (RKFaceDetectResults *)RKFaceSearch:(UIImage *)image jobs:(NSString *)jobs nameSpace:(NSString *)name_space userID:(NSString *)user_id num_return:(NSNumber *)num_return tags:(NSArray *)tags {
     NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
     NSString *encodedString = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
     encodedString = [encodedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
@@ -268,10 +277,11 @@ static NSString *API_Secret = @"5678";
     if (num_return) {
         [jobsDictionary setObject:num_return forKey:@"num_return"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceSearchResponse:data];
 }
 
-+ (NSString *)RKFaceSearchWithUrl:(NSURL *)imageUrl jobs:(NSString *)jobs nameSpace:(NSString *)name_space userID:(NSString *)user_id num_return:(NSNumber *)num_return tags:(NSArray *)tags {
++ (RKFaceDetectResults *)RKFaceSearchWithUrl:(NSURL *)imageUrl jobs:(NSString *)jobs nameSpace:(NSString *)name_space userID:(NSString *)user_id num_return:(NSNumber *)num_return tags:(NSArray *)tags {
     NSString *jobsString = jobs ? jobs : @"face_search";
     NSMutableDictionary * jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
                                                                                            @"api_secret": API_Secret,
@@ -289,12 +299,13 @@ static NSString *API_Secret = @"5678";
     if (num_return) {
         [jobsDictionary setObject:num_return forKey:@"num_return"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceSearchResponse:data];
 }
 
 
 // ReKognition Face Delete Function
-+ (NSString *)RKFaceDelete:(NSString *)tag imageIndex:(NSArray *)img_index_array nameSpace:(NSString *)name_space userID:(NSString *)user_id {
++ (RKBaseResults *)RKFaceDelete:(NSString *)tag imageIndex:(NSArray *)img_index_array nameSpace:(NSString *)name_space userID:(NSString *)user_id {
     NSMutableDictionary *jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
                                                                                           @"api_secret": API_Secret,
                                                                                           @"jobs": @"face_delete"}];
@@ -310,13 +321,13 @@ static NSString *API_Secret = @"5678";
     if (img_index_array) {
         [jobsDictionary setObject:[img_index_array componentsJoinedByString:@";"] forKey:@"img_index"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
-    
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceDeleteResponse:data];
 }
 
 
 //ReKognition Face Rename Function
-+ (NSString *)RKFaceRenameOrMergeTag:(NSString *)oldTag withTag:(NSString *)newTag selectedFaces:(NSArray *)img_index_array nameSpace:(NSString *)name_space userID:(NSString *)user_id {
++ (RKBaseResults *)RKFaceRenameOrMergeTag:(NSString *)oldTag withTag:(NSString *)newTag selectedFaces:(NSArray *)img_index_array nameSpace:(NSString *)name_space userID:(NSString *)user_id {
     NSMutableDictionary *jobsDictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"api_key": API_Key,
                                                                                           @"api_secret": API_Secret,
                                                                                           @"jobs": @"face_rename",
@@ -331,29 +342,32 @@ static NSString *API_Secret = @"5678";
     if (user_id) {
         [jobsDictionary setObject:user_id forKey:@"user_id"];
     }
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseFaceRenameResponse:data];
 }
 
 
 // ReKognition Face Stats Function
-+ (NSString *)RKFaceNameSpaceStats {
++ (RKNameSpaceStatsResults *)RKNameSpaceStats {
     NSDictionary *jobsDictionary = @{@"api_key": API_Key,
                                      @"api_secret": API_Secret,
-                                     @"jobs": @"name_space_stats"};
-    return [self postReKognitionJobs:jobsDictionary];
+                                     @"jobs": @"face_name_space_stats"};
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseNameSpaceStatsResponse:data];
 }
 
-+ (NSString *)RKFaceUserIdStats:(NSString *)name_space {
++ (RKUserIdStatsResults *)RKUserIdStats:(NSString *)name_space {
     NSDictionary *jobsDictionary = @{@"api_key": API_Key,
                                      @"api_secret": API_Secret,
-                                     @"jobs": @"user_id_stats",
+                                     @"jobs": @"face_user_id_stats",
                                      @"name_space": name_space};
-    return [self postReKognitionJobs:jobsDictionary];
+    NSData *data = [self postReKognitionJobs:jobsDictionary];
+    return [ReKognitionResponseParser parseUserIdStatsResponse:data];
 }
 
 
 // ReKognition Scene Understanding Function
-+ (NSString *)RKSceneUnderstanding:(UIImage *)image {
++ (RKSceneUnderstandingResults *)RKSceneUnderstanding:(UIImage *)image {
     NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
     NSString *encodedString = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
     encodedString = [encodedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
@@ -361,15 +375,17 @@ static NSString *API_Secret = @"5678";
                                      @"api_secret": API_Secret,
                                      @"jobs": @"scene",
                                      @"base64": encodedString};
-    return [self postReKognitionJobs:jobDictionary];
+    NSData *data = [self postReKognitionJobs:jobDictionary];
+    return [ReKognitionResponseParser parseSceneUnderstandingResponse:data];
 }
 
-+ (NSString *)RKSceneUnderstandingWithUrl:(NSURL *)imageUrl {
++ (RKSceneUnderstandingResults *)RKSceneUnderstandingWithUrl:(NSURL *)imageUrl {
     NSDictionary * jobDictionary = @{@"api_key": API_Key,
                                      @"api_secret": API_Secret,
                                      @"jobs": @"scene",
                                      @"urls": imageUrl};
-    return [self postReKognitionJobs:jobDictionary];
+    NSData *data = [self postReKognitionJobs:jobDictionary];
+    return [ReKognitionResponseParser parseSceneUnderstandingResponse:data];
 }
 
 @end

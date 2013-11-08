@@ -15,7 +15,7 @@
 @property (nonatomic) CGRect bb;  // Normalized space (between 0.0f and 1.0f)
 @end
 
-@interface FaceThumbnailCropper1 : NSObject
+@interface FaceThumbnailCropper : NSObject
 + (NSArray *)cropFaceThumbnails:(NSData *)image;
 + (NSArray*)cropFaceThumbnails:(NSData *)image returnBB:(BOOL)returnBB; // returns an Array of Face
 @end

@@ -6,14 +6,15 @@
 //  Copyright (c) 2013 Orbeus Inc. All rights reserved.
 //
 
-#import "FaceThumbnailCropper1.h"
+#import "FaceThumbnailCropper.h"
+#import "Base64.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <ImageIO/ImageIO.h>
 
 @implementation RKFace
 @end
 
-@implementation FaceThumbnailCropper1
+@implementation FaceThumbnailCropper
 
 const float THUMBNAIL_EDGE_LENGTH = 200;
 
@@ -79,7 +80,7 @@ const float THUMBNAIL_EDGE_LENGTH = 200;
       } else {
         newSize = CGSizeMake(THUMBNAIL_EDGE_LENGTH, thumbnail.size.height / thumbnail.size.width * THUMBNAIL_EDGE_LENGTH);
       }
-      thumbnail = [FaceThumbnailCropper1 imageWithImage:thumbnail scaledToSize:newSize];
+      thumbnail = [FaceThumbnailCropper imageWithImage:thumbnail scaledToSize:newSize];
     }
     if (returnBB) {
       RKFace* face = [[RKFace alloc] init];
