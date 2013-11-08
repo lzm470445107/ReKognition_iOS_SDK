@@ -23,7 +23,7 @@ a simple example to demo the SDK. For more information about our ReKognition API
 
 [ReKognitionSDK][3] class contain the following functions:
 
-ReKognition Post Jobs Function (to customize your own recognition functions)
+To customize your own recognition functions:
 ```objective-c
 + (NSData *)postReKognitionJobs:(NSDictionary *)jobsDictionary;
 ```
@@ -166,6 +166,6 @@ This demo app allows you to perform the following tasks:
 
 * Recognize the image using the our face detection and scene understanding functions;
 
-Notes: the demo app makes use of [FaceThumbnailCropper][1] and [UIImageRotationFixer][2] helper classes.
+Notes: the demo app shows the proper usage of [FaceThumbnailCropper][1] and [UIImageRotationFixer][2] helper classes.
 
 For any questions, please contact eng@orbe.us
