@@ -1,16 +1,17 @@
 Current Version: 2.0
 ===============================
-
-Update:
-
-(1) Implemented FaceThumbnailCropper and UIImageRotationFixer that serve as helper classes that work with ReKognitionSDK.
+Updates:
+<ol>
+<li>Implemented FaceThumbnailCropper and UIImageRotationFixer that serve as helper classes that work with ReKognitionSDK.
 
 FaceThumbnailCropper crops face thumbnails out of the raw image, merges thumbnails into a single compressed image, and serves that image as the source for ReKognition API.
 
 UIImageRotationFixer rotates the underlining CGImageRef of an UIImage to its up un-mirrored position. It is used to correct the source images whose orientation is other than upwards, like images taken from camera roll.
-
+</li>
+<li>
 (2) ReKognitionResults provides data classes and parsing methods for ReKognition API response.
-
+</li>
+</ol>
 ===============================
 
 This ReKognition iOS SDK is intent for developers who want to integrate ReKognition API into their 
@@ -131,7 +132,7 @@ The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 Configuration:
 ===============================
 <ol>
-<li> Click <a href="http://v2.rekognition.com/user/create">here</a> to register a ReKognition account, and you will receive the API key and secret by email.
+<li> Click <a href="http://v2.rekognition.com/user/create">here</a> to register a ReKognition account, and you will receive the API key and secret by email.</li>
 
 <li> Use your own API Key and Secret in RekognitionSDK.m</li>
  
