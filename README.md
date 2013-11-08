@@ -2,8 +2,9 @@ Current Version: 2.0
 ===============================
 Updates:
 <ol>
-<li>Implemented FaceThumbnailCropper and UIImageRotationFixer that serve as helper classes that work with ReKognitionSDK.<br><br>
-FaceThumbnailCropper crops face thumbnails out of the raw image, merges thumbnails into a single compressed image, and serves that image as the source for ReKognition API.<br><br>
+<li>
+  Implemented FaceThumbnailCropper and UIImageRotationFixer that serve as helper classes that work with ReKognitionSDK.<br>
+FaceThumbnailCropper crops face thumbnails out of the raw image, merges thumbnails into a single compressed image, and serves that image as the source for ReKognition API.<br>
 UIImageRotationFixer rotates the underlining CGImageRef of an UIImage to its up un-mirrored position. It is used to correct the source images whose orientation is other than upwards, like images taken from camera roll.
 </li>
 <li>
