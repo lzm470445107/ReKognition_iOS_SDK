@@ -1,19 +1,25 @@
-Current Version: 2.0
-===============================
-Updates:
+# Current Version: 2.0
 
-1. Implemented FaceThumbnailCropper and UIImageRotationFixer that serve as helper classes that work with ReKognitionSDK.
+## Updates:
 
-   FaceThumbnailCropper crops face thumbnails out of the raw image, merges thumbnails into a single compressed image, and serves that image as the source for ReKognition API.
+1. Implemented [FaceThumbnailCropper][1] and [UIImageRotationFixer][2] that serve as helper classes for [ReKognitionSDK][3].
 
-   UIImageRotationFixer rotates the underlining CGImageRef of an UIImage to its up un-mirrored position. It is used to correct the source images whose orientation is other than upwards, like images taken from camera roll.
-2. ReKognitionResults provides data classes and parsing methods for ReKognition API response.
+   [FaceThumbnailCropper] crops face thumbnails out of the raw image, merges thumbnails into a single compressed image, and serves that image as the source for ReKognition API.
+
+   [UIImageRotationFixer] rotates the underlining CGImageRef of an UIImage to its up un-mirrored position. It is used to correct the source images whose orientation is other than upwards, like images taken from camera roll.
+
+2. [ReKognitionResults][4] provides data classes and parsing methods for ReKognition API response.
+
+[1]: https://github.com/orbeus/ReKognition_iOS_SDK/blob/master/Rekognition_iOS_SDK/SDK/FaceThumbnailCropper.h
+[2]: https://github.com/orbeus/ReKognition_iOS_SDK/blob/master/Rekognition_iOS_SDK/SDK/UIImageRotationFixer.h
+[3]: https://github.com/orbeus/ReKognition_iOS_SDK/blob/master/Rekognition_iOS_SDK/SDK/ReKognitionSDK.h
+[4]: https://github.com/orbeus/ReKognition_iOS_SDK/blob/master/Rekognition_iOS_SDK/SDK/ReKognitionResults.h
 
 -----------------------------
 This ReKognition iOS SDK is intent for developers who want to integrate ReKognition API into their 
 iOS applications. The folder contains our ReKognition iOS SDKs (ReKognitionSDK.h and ReKognitionSDK.m under folder named SDK) and 
 a simple example to demo the SDK. For more information about our ReKognition API, please read our 
-<a href="http://v2.rekognition.com/developer/docs">documentation</a>.
+[documentation](http://v2.rekognition.com/developer/docs).
 
 The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
 
@@ -37,6 +43,7 @@ ReKognition Face Add Function
                             userID:(NSString *)user_id             // optional
                                tag:(NSString *)tag                 // optional
                               jobs:(NSString *)jobs;               // optional: "face_add"
+
 + (RKFaceDetectResults *)RKFaceAddWithUrl:(NSURL *)imageUrl
                                 nameSpace:(NSString *)name_space  // optional
                                    userID:(NSString *)user_id     // optional
@@ -75,6 +82,7 @@ ReKognition Face Recognize Function
                                     jobs:(NSString *)jobs          // optional: "face_recognize"
                               num_return:(NSNumber *)num_return    // optional: 3
                                     tags:(NSArray *)tags;          // optional
+
 + (RKFaceDetectResults *)RKFaceRecognizeWithUrl:(NSURL *)imageUrl
                                       nameSpace:(NSString *)name_space     // optional
                                          userID:(NSString *)user_id        // optional
@@ -101,6 +109,7 @@ ReKognition Face Search Function
                                userID:(NSString *)user_id              // optional
                            num_return:(NSNumber *)num_return           // optional
                                  tags:(NSArray *)tags;                 // optional
+
 + (RKFaceDetectResults *)RKFaceSearchWithUrl:(NSURL *)imageUrl
                                         jobs:(NSString *)jobs          // optional: "face_search"
                                    nameSpace:(NSString *)name_space    // optional
@@ -129,17 +138,18 @@ ReKognition Face Rename/Merge/Assign Function
 ReKognition Face Stats
 ```objective-c
 + (RKNameSpaceStatsResults *)RKNameSpaceStats;
+
 + (RKUserIdStatsResults *)RKUserIdStats:(NSString *)name_space;
 ```
 
 ReKognition Scene Understadning Function
 ```objective-c
 + (RKSceneUnderstandingResults *)RKSceneUnderstanding:(UIImage *)image;
+
 + (RKSceneUnderstandingResults *)RKSceneUnderstandingWithUrl:(NSURL *)imageUrl;
 ```
 
-Configuration:
-===============================
+## Configuration:
 <ol>
 <li> Click <a href="http://v2.rekognition.com/user/create">here</a> to register a ReKognition account, and you will receive the API key and secret by email.</li>
 
@@ -152,8 +162,7 @@ static NSString *API_Secret = @"YOUR_API_SECRET";
 </ol>
 
 
-Example: 
-===============================
+## Example: 
 This demo allows you to perform the following tasks:
 <ol>
 <li> Select a photo from the album or take a picture using the camera; </li> 
