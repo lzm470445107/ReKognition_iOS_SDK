@@ -21,7 +21,7 @@ iOS applications. The folder contains our ReKognition iOS SDKs (ReKognitionSDK.h
 a simple example to demo the SDK. For more information about our ReKognition API, please read our 
 [documentation](http://v2.rekognition.com/developer/docs).
 
-The [ReKognitionSDK][3] class contain the following functions:
+[ReKognitionSDK][3] class contain the following functions:
 
 ReKognition Post Jobs Function (to customize your own recognition functions)
 ```objective-c
@@ -150,33 +150,22 @@ ReKognition [Scene Understadning](http://rekognition.com/developer/docs#scenecat
 ```
 
 ### Configuration:
-<ol>
-<li> Click <a href="http://v2.rekognition.com/user/create">here</a> to register a ReKognition account, and you will receive the API key and secret by email.</li>
+1. Click [here](http://v2.rekognition.com/user/create) to register a ReKognition account, and you will receive the API key and secret by email.
 
-<li> Use your own API Key and Secret in RekognitionSDK.m</li>
- 
-<pre><code>static NSString *API_Key = @"YOUR_API_KEY";
+2. Use your own API Key and Secret in [RekognitionSDK][3].
+
+```objective-c 
+static NSString *API_Key = @"YOUR_API_KEY";
 static NSString *API_Secret = @"YOUR_API_SECRET";
-</code></pre>
+```
 
-</ol>
+### Demo: 
+This demo app allows you to perform the following tasks:
 
+* Select a photo from the album or take a picture using the camera;
 
-### Example: 
-This demo allows you to perform the following tasks:
-<ol>
-<li> Select a photo from the album or take a picture using the camera; </li> 
+* Recognize the image using the our face detection and scene understanding functions;
 
-<li> Recognize the image using the our face detection and scene understanding functions;</li> 
-</ol>
-
-Notes: 
-
-<ul>
-<li> When processing photo taken by the back camera, it might take a while since the image is not resized (in the to-do list)
-</li>
-<li> The iPad version is still under construction
-</li>
-</ul>
+Notes: the demo app makes use of [FaceThumbnailCropper][1] and [UIImageRotationFixer][2] helper classes.
 
 For any questions, please contact eng@orbe.us
