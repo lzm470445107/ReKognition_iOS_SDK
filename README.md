@@ -1,6 +1,6 @@
 # Current Version: 2.0
 
-## Updates:
+### Updates:
 
 1. Implemented [FaceThumbnailCropper][1] and [UIImageRotationFixer][2] that serve as helper classes for [ReKognitionSDK][3].
 
@@ -21,14 +21,14 @@ iOS applications. The folder contains our ReKognition iOS SDKs (ReKognitionSDK.h
 a simple example to demo the SDK. For more information about our ReKognition API, please read our 
 [documentation](http://v2.rekognition.com/developer/docs).
 
-The ReKognitionSDK.h and ReKognitionSDK.m files contain the following functions:
+The [ReKognitionSDK][3] class contain the following functions:
 
 ReKognition Post Jobs Function (to customize your own recognition functions)
 ```objective-c
 + (NSData *)postReKognitionJobs:(NSDictionary *)jobsDictionary;
 ```
 
-ReKognition Face Detect Function (if not set, jobs is "face_aggressive" by default)
+ReKognition [Face Detect](http://rekognition.com/developer/docs#facedetect) Function (if not set, jobs is `face_aggressive` by default)
 ```objective-c
 + (RKFaceDetectResults *)RKFaceDetect:(UIImage*)image
                                  jobs:(NSString *)jobs;            // optional: "face_aggressive"
@@ -36,7 +36,7 @@ ReKognition Face Detect Function (if not set, jobs is "face_aggressive" by defau
                                         jobs:(NSString *)jobs;     // optional: "face_aggressive"
 ```
 
-ReKognition Face Add Function
+ReKognition [Face Add](http://rekognition.com/developer/docs#faceadd) Function
 ```objective-c
 + (RKFaceDetectResults *)RKFaceAdd:(UIImage*)image
                          nameSpace:(NSString *)name_space          // optional
@@ -51,21 +51,21 @@ ReKognition Face Add Function
                                      jobs:(NSString *)jobs;       // optional: "face_add"
 ```
 
-ReKognition Face Train Function
+ReKognition [Face Train](http://rekognition.com/developer/docs#facetrain) Function
 ```objective-c
 + (RKBaseResults *)RKFaceTrain:(NSString *)name_space        // optional
                         userID:(NSString *)user_id           // optional
                           tags:(NSArray *)tags;              // optional
 ```
 
-ReKognition Face Cluster Function
+ReKognition [Face Cluster](http://rekognition.com/developer/docs#facecluster) Function
 ```objective-c
 + (RKFaceClusterResults *)RKFaceCluster:(NSString *)name_space      // optional
                                  userId:(NSString *)user_id         // optional
                          aggressiveness:(NSNumber *)aggressiveness; // optional: 40
 ```
 
-ReKognition Face Crawl Function
+ReKognition [Face Crawl](http://rekognition.com/developer/docs#facecrawl) Function
 ```objective-c
 + (RKFaceCrawlResults *)RKFaceCrawl:(NSString *)fb_id
                        access_token:(NSString *)access_token
@@ -74,7 +74,7 @@ ReKognition Face Crawl Function
                              userID:(NSString *)user_id;          // optional
 ```
 
-ReKognition Face Recognize Function
+ReKognition [Face Recognize](http://rekognition.com/developer/docs#facerecognize) Function
 ```objective-c
 + (RKFaceDetectResults *)RKFaceRecognize:(UIImage *)image
                                nameSpace:(NSString *)name_space    // optional
@@ -91,7 +91,7 @@ ReKognition Face Recognize Function
                                            tags:(NSArray *)tags;           // optional
 ```
 
-ReKognition Face Visualize Function
+ReKognition [Face Visualize](http://rekognition.com/developer/docs#facevirtualize) Function
 ```objective-c
 + (RKFaceVisualizeResults *)RKFaceVisualize:(NSArray *)tags                       // optional
                                        jobs:(NSString *)jobs                      // optional: "face_visualize_show_default_tag"
@@ -101,7 +101,7 @@ ReKognition Face Visualize Function
                       num_img_return_pertag:(NSNumber *)num_img_return_pertag;    // optional
 ```
 
-ReKognition Face Search Function
+ReKognition [Face Search](http://rekognition.com/developer/docs#facesearch) Function
 ```objective-c
 + (RKFaceDetectResults *)RKFaceSearch:(UIImage *)image
                                  jobs:(NSString *)jobs                 // optional: "face_search"
@@ -118,7 +118,7 @@ ReKognition Face Search Function
                                         tags:(NSArray *)tags;          // optional
 ```
 
-ReKognition Face Delete Function
+ReKognition [Face Delete](http://rekognition.com/developer/docs#facedelete) Function
 ```objective-c
 + (RKBaseResults *)RKFaceDelete:(NSString *)tag                  // optional
                      imageIndex:(NSArray *)img_index_array       // optional
@@ -126,7 +126,7 @@ ReKognition Face Delete Function
                          userID:(NSString *)user_id;             // optional
 ```
 
-ReKognition Face Rename/Merge/Assign Function
+ReKognition [Face Rename](http://rekognition.com/developer/docs#facerename) Function
 ```objective-c
 + (RKBaseResults *)RKFaceRenameOrMergeTag:(NSString *)oldTag
                                   withTag:(NSString *)newTag
@@ -135,21 +135,21 @@ ReKognition Face Rename/Merge/Assign Function
                                    userID:(NSString *)user_id;           // optional
 ```
 
-ReKognition Face Stats
+ReKognition [Face Stats](http://rekognition.com/developer/docs#facestats) Function
 ```objective-c
 + (RKNameSpaceStatsResults *)RKNameSpaceStats;
 
 + (RKUserIdStatsResults *)RKUserIdStats:(NSString *)name_space;
 ```
 
-ReKognition Scene Understadning Function
+ReKognition [Scene Understadning](http://rekognition.com/developer/docs#scenecatagorize) Function
 ```objective-c
 + (RKSceneUnderstandingResults *)RKSceneUnderstanding:(UIImage *)image;
 
 + (RKSceneUnderstandingResults *)RKSceneUnderstandingWithUrl:(NSURL *)imageUrl;
 ```
 
-## Configuration:
+### Configuration:
 <ol>
 <li> Click <a href="http://v2.rekognition.com/user/create">here</a> to register a ReKognition account, and you will receive the API key and secret by email.</li>
 
@@ -162,7 +162,7 @@ static NSString *API_Secret = @"YOUR_API_SECRET";
 </ol>
 
 
-## Example: 
+### Example: 
 This demo allows you to perform the following tasks:
 <ol>
 <li> Select a photo from the album or take a picture using the camera; </li> 
